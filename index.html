@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Manual Counter</title>
+
+    <meta name="viewport" content="width=1300, initial-scale=1, maximum-scale=1">
+
+    <!--css-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <!--LIBRARY-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  </head>
+
+
+  <body>
+    <div class="container">
+      <br>
+      <div class="row">
+
+        <div class="col-md-12 justify-content-center">
+          <button type="button" class="btn-edit btn btn-primary">Edit</button>
+        </div>
+
+        <div class="col-md-12 d-flex justify-content-center">
+          <table class="excel_table " class="mg30"></table>
+          <div class="col-md-2">
+            Total Pria : <span id="total_pria"></span><br>
+            Total Wanita : <span id="total_wanita"></span><br>
+            Total Volunteer: <span id="total_volunteer"></span><br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+
+
+  <script type="text/javascript">
+    $( document ).ready(function() {
+        let data = [
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
+
+        let rules = {1: '#00FF00', 0: '#AAAAAA'};
+
+        // draw table
+        for(var b="",c=0; c <= data.length+1;c++){
+	         b += "<tr>";
+           for(var d=0;d <= data[0].length+1; d++){
+             b += '<td data-row="'+c+'" data-column="'+d+'"></td>';
+           }
+           b+="</tr>";
+        }
+        $('.excel_table').append(b);
+
+        //render table
+        var table = $('.excel_table');
+        var colHeaders = table.find("tr:first td");
+        var lastColHeaders = table.find("tr:last td");
+        var tr = table.find("tr");
+        var rowHeaders = tr.find("td:first");
+        var lastRowHeaders= tr.find("td:last");
+
+        for(var a=0;a < data.length;a++){
+
+          for(var b=0;b < data[0].length;b++) {renderCell(a,b, data, table); }
+          colHeaders.css("background","#eee"), lastColHeaders.css("background","#eee");
+      		for(var c=0;c < data[0].length;c++) {
+            colHeaders[c+1].innerHTML = c+1;
+            lastColHeaders[c+1].innerHTML=c+1;
+
+          }
+          rowHeaders.css("background","#eee"),
+          lastRowHeaders.css("background","#eee");
+    			for(var c=0;c<data.length;c++) rowHeaders[c+1].innerHTML=c+1, lastRowHeaders[c+1].innerHTML=c+1;
+        }
+
+
+        // functions
+        function renderCell(a, b, data, table){
+            let cellData = data[a][b];
+            a++;
+            b++;
+
+            table.find('td[data-row="'+a+'"][data-column="'+b+'"]').css({
+              background: rules[cellData],
+              color: rules[cellData]}
+            )
+        }
+
+        let edit = false;
+        $('.btn-edit').click(function(){
+          if(!edit){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-warning');
+            $(this).html('Kunci');
+            edit = true;
+            $(".excel_table").unbind("click");
+            $(".excel_table").on("click", "td", isEdit);
+          }
+          else{
+            $(this).removeClass('btn-warning');
+            $(this).addClass('btn-primary');
+            $(this).html('Edit');
+            edit = false;
+            $(".excel_table").unbind("click");
+            $(".excel_table").on("click", "td", ManualCounter);
+          }
+        });
+
+        function isEdit(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+          // if (data[r][c] == 1) {
+          //   data[r][c] = 0;
+          //   cell.css({background: '#AAAAAA', color: '#AAAAAA'});
+          // }
+          // else if (data[r][c] == 0) {
+          //   data[r][c] = 1;
+          //   cell.css({background: '#00FF00', color: '#00FF00'});
+          // }
+          if (data[r][c] != 0) {
+            data[r][c] = 0;
+            cell.css({background: '#AAAAAA', color: '#AAAAAA'});
+          }
+          else{
+            data[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+
+          lastClicked(cell);
+        }
+
+        function ManualCounter(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if(data[r][c] == 1){
+            data[r][c] = 2;
+            cell.css({background: '#FF0000', color: '#FF0000'});
+          }
+          else if(data[r][c] == 2){
+            data[r][c] = 3;
+            cell.css({background: '#0000FF', color: '#0000FF'});
+          }
+          else if(data[r][c] == 3){
+            data[r][c] = 4;
+            cell.css({background: '#d303fc', color: '#d303fc'});
+          }
+          else if(data[r][c] == 4){
+            data[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+
+          lastClicked(cell);
+          countAll();
+        }
+
+        function countAll(){
+          let total_pria = 0, total_wanita=0; total_volunteer=0;
+          for(let c=0; c < data.length;c++){
+             for(var d=0;d <= data[0].length; d++){
+               if(data[c][d] == 2){
+                 total_wanita++;
+               }
+               else if(data[c][d] == 3){
+                 total_pria++;
+               }
+               else if(data[c][d] == 4){
+                 total_volunteer++;
+               }
+             }
+          }
+          $('#total_pria').html(total_pria);
+          $('#total_wanita').html(total_wanita);
+          $('#total_volunteer').html(total_volunteer);
+        }
+
+        function lastClicked(cell){
+          cell.parents('table.excel_table').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+        }
+
+
+    });
+  </script>
+</html>
