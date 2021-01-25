@@ -18,32 +18,120 @@
 
 
   <body>
+
     <div class="container">
+
       <br>
-      <div class="row">
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="settingshead"><a href="#a" data-toggle="tab">A</a></li>
+          <li class="settingshead"><a href="#b" data-toggle="tab">B</a></li>
+          <li class="settingshead"><a href="#c" data-toggle="tab">C</a></li>
+          <li class="settingshead"><a href="s1" data-toggle="tab">S1</a></li>
+          <li class="settingshead"><a href="#s2" data-toggle="tab">S2</a></li>
+        </ul>
+      </div>
 
-        <div class="col-md-12 justify-content-center">
-          <button type="button" class="btn-edit btn btn-primary">Edit</button>
-        </div>
+      <div class="tab-content">
 
-        <div class="col-md-12 d-flex justify-content-center">
-          <table class="excel_table " class="mg30"></table>
-          <div class="col-md-2">
-            Total Pria : <span id="total_pria"></span><br>
-            Total Wanita : <span id="total_wanita"></span><br>
-            Total Volunteer: <span id="total_volunteer"></span><br>
+        <div class="tab-pane active" id="a">
+          <br>
+          <div class="row">
+            <div class="col-md-12 justify-content-center">
+              <button type="button" class="btn-edit-a btn btn-primary">Edit</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+              <table id="table_a" class="excel_table mg30"></table>
+              <div class="col-md-2">
+                Total Pria : <span id="total_pria_a"></span><br>
+                Total Wanita : <span id="total_wanita_a"></span><br>
+                Total Volunteer: <span id="total_volunteer_a"></span><br>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div class="tab-pane" id="b">
+          <br>
+          <div class="row">
+            <div class="col-md-12 justify-content-center">
+              <button type="button" class="btn-edit-b btn btn-primary">Edit</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+              <table id="table_b" class="excel_table mg30"></table>
+              <div class="col-md-2">
+                Total Pria : <span id="total_pria_b"></span><br>
+                Total Wanita : <span id="total_wanita_b"></span><br>
+                Total Volunteer: <span id="total_volunteer_b"></span><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="c">
+          <br>
+          <div class="row">
+            <div class="col-md-12 justify-content-center">
+              <button type="button" class="btn-edit-c btn btn-primary">Edit</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+              <table id="table_c" class="excel_table mg30"></table>
+              <div class="col-md-2">
+                Total Pria : <span id="total_pria_c"></span><br>
+                Total Wanita : <span id="total_wanita_c"></span><br>
+                Total Volunteer: <span id="total_volunteer_c"></span><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="s1">
+          <br>
+          <div class="row">
+            <div class="col-md-12 justify-content-center">
+              <button type="button" class="btn-edit-s1 btn btn-primary">Edit</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+              <table id="table_s1" class="excel_table mg30"></table>
+              <div class="col-md-2">
+                Total Pria : <span id="total_pria_s1"></span><br>
+                Total Wanita : <span id="total_wanita_s1"></span><br>
+                Total Volunteer: <span id="total_volunteer_s1"></span><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-pane" id="s2">
+          <br>
+          <div class="row">
+            <div class="col-md-12 justify-content-center">
+              <button type="button" class="btn-edit-s2 btn btn-primary">Edit</button>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center">
+              <table id="table_s2" class="excel_table mg30"></table>
+              <div class="col-md-2">
+                Total Pria : <span id="total_pria_s2"></span><br>
+                Total Wanita : <span id="total_wanita_s2"></span><br>
+                Total Volunteer: <span id="total_volunteer_s2"></span><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
+
+
+
 
     </div>
 
   </body>
 
-
+  <script src="table.js" charset="utf-8"></script>
   <script type="text/javascript">
-    $( document ).ready(function() {
-        let data = [
+    $( document ).ready(async function() {
+        let data_a = [
                     [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
                     [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
                     [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -60,149 +148,488 @@
                     [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         ];
 
-        let rules = {1: '#00FF00', 0: '#AAAAAA'};
+        let data_b = [
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
 
-        // draw table
-        for(var b="",c=0; c <= data.length+1;c++){
-	         b += "<tr>";
-           for(var d=0;d <= data[0].length+1; d++){
-             b += '<td data-row="'+c+'" data-column="'+d+'"></td>';
-           }
-           b+="</tr>";
-        }
-        $('.excel_table').append(b);
+        let data_c = [
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
 
-        //render table
-        var table = $('.excel_table');
-        var colHeaders = table.find("tr:first td");
-        var lastColHeaders = table.find("tr:last td");
-        var tr = table.find("tr");
-        var rowHeaders = tr.find("td:first");
-        var lastRowHeaders= tr.find("td:last");
+        let data_s1 = [
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
 
-        for(var a=0;a < data.length;a++){
+        let data_s2 = [
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+                    [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+        ];
 
-          for(var b=0;b < data[0].length;b++) {renderCell(a,b, data, table); }
-          colHeaders.css("background","#eee"), lastColHeaders.css("background","#eee");
-      		for(var c=0;c < data[0].length;c++) {
-            colHeaders[c+1].innerHTML = c+1;
-            lastColHeaders[c+1].innerHTML=c+1;
+        await render(data_a, '#table_a');
+        await render(data_b, '#table_b');
+        await render(data_c, '#table_c');
+        await render(data_s1, '#table_s1');
+        await render(data_s2, '#table_s2');
 
-          }
-          rowHeaders.css("background","#eee"),
-          lastRowHeaders.css("background","#eee");
-    			for(var c=0;c<data.length;c++) rowHeaders[c+1].innerHTML=c+1, lastRowHeaders[c+1].innerHTML=c+1;
-        }
+        let edit_a = false;
+        let edit_b = false;
+        let edit_c = false;
+        let edit_s1 = false;
+        let edit_s2 = false;
 
-
-        // functions
-        function renderCell(a, b, data, table){
-            let cellData = data[a][b];
-            a++;
-            b++;
-
-            table.find('td[data-row="'+a+'"][data-column="'+b+'"]').css({
-              background: rules[cellData],
-              color: rules[cellData]}
-            )
-        }
-
-        let edit = false;
-        $('.btn-edit').click(function(){
-          if(!edit){
+        $('.btn-edit-a').click(function(){
+          if(!edit_a){
             $(this).removeClass('btn-primary');
             $(this).addClass('btn-warning');
             $(this).html('Kunci');
-            edit = true;
-            $(".excel_table").unbind("click");
-            $(".excel_table").on("click", "td", isEdit);
+            edit_a = true;
+            $("#table_a").unbind("click");
+            $("#table_a").on("click", "td", isEdit_a);
           }
           else{
             $(this).removeClass('btn-warning');
             $(this).addClass('btn-primary');
             $(this).html('Edit');
-            edit = false;
-            $(".excel_table").unbind("click");
-            $(".excel_table").on("click", "td", ManualCounter);
+            edit_a = false;
+            $("#table_a").unbind("click");
+            $("#table_a").on("click", "td", ManualCounter_a);
+          }
+        });
+        $('.btn-edit-b').click(function(){
+          if(!edit_b){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-warning');
+            $(this).html('Kunci');
+            edit_b = true;
+            $("#table_b").unbind("click");
+            $("#table_b").on("click", "td", isEdit_b);
+          }
+          else{
+            $(this).removeClass('btn-warning');
+            $(this).addClass('btn-primary');
+            $(this).html('Edit');
+            edit_b = false;
+            $("#table_b").unbind("click");
+            $("#table_b").on("click", "td", ManualCounter_b);
+          }
+        });
+        $('.btn-edit-c').click(function(){
+          if(!edit_c){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-warning');
+            $(this).html('Kunci');
+            edit_c = true;
+            $("#table_c").unbind("click");
+            $("#table_c").on("click", "td", isEdit_c);
+          }
+          else{
+            $(this).removeClass('btn-warning');
+            $(this).addClass('btn-primary');
+            $(this).html('Edit');
+            edit_c = false;
+            $("#table_c").unbind("click");
+            $("#table_c").on("click", "td", ManualCounter_c);
+          }
+        });
+        $('.btn-edit-s1').click(function(){
+          if(!edit_s1){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-warning');
+            $(this).html('Kunci');
+            edit_s1 = true;
+            $("#table_s1").unbind("click");
+            $("#table_s1").on("click", "td", isEdit_s1);
+          }
+          else{
+            $(this).removeClass('btn-warning');
+            $(this).addClass('btn-primary');
+            $(this).html('Edit');
+            edit_s1 = false;
+            $("#table_s1").unbind("click");
+            $("#table_s1").on("click", "td", ManualCounter_s1);
+          }
+        });
+        $('.btn-edit-s2').click(function(){
+          if(!edit_s2){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-warning');
+            $(this).html('Kunci');
+            edit_s2 = true;
+            $("#table_s2").unbind("click");
+            $("#table_s2").on("click", "td", isEdit_s2);
+          }
+          else{
+            $(this).removeClass('btn-warning');
+            $(this).addClass('btn-primary');
+            $(this).html('Edit');
+            edit_a = false;
+            $("#table_s2").unbind("click");
+            $("#table_s2").on("click", "td", ManualCounter_s2);
           }
         });
 
-        function isEdit(){
+
+        function isEdit_a(){
           var cell = $(this);
           var r = cell.attr('data-row') - 1;
           var c = cell.attr('data-column') - 1;
-          // if (data[r][c] == 1) {
-          //   data[r][c] = 0;
-          //   cell.css({background: '#AAAAAA', color: '#AAAAAA'});
-          // }
-          // else if (data[r][c] == 0) {
-          //   data[r][c] = 1;
-          //   cell.css({background: '#00FF00', color: '#00FF00'});
-          // }
-          if (data[r][c] != 0) {
-            data[r][c] = 0;
+
+          if (data_a[r][c] != 0) {
+            data_a[r][c] = 0;
             cell.css({background: '#AAAAAA', color: '#AAAAAA'});
           }
           else{
-            data[r][c] = 1;
+            data_a[r][c] = 1;
             cell.css({background: '#00FF00', color: '#00FF00'});
           }
-
-          lastClicked(cell);
+          cell.parents('table#table_a').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
         }
-
-        function ManualCounter(){
+        function isEdit_b(){
           var cell = $(this);
           var r = cell.attr('data-row') - 1;
           var c = cell.attr('data-column') - 1;
 
-          if(data[r][c] == 1){
-            data[r][c] = 2;
+          if (data_b[r][c] != 0) {
+            data_b[r][c] = 0;
+            cell.css({background: '#AAAAAA', color: '#AAAAAA'});
+          }
+          else{
+            data_b[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+          cell.parents('table#table_b').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+        }
+        function isEdit_c(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if (data_c[r][c] != 0) {
+            data_c[r][c] = 0;
+            cell.css({background: '#AAAAAA', color: '#AAAAAA'});
+          }
+          else{
+            data_c[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+          cell.parents('table#table_c').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+        }
+        function isEdit_s1(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if (data_s1[r][c] != 0) {
+            data_s1[r][c] = 0;
+            cell.css({background: '#AAAAAA', color: '#AAAAAA'});
+          }
+          else{
+            data_s1[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+          cell.parents('table#table_s1').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+        }
+        function isEdit_s2(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if (data_s2[r][c] != 0) {
+            data_s2[r][c] = 0;
+            cell.css({background: '#AAAAAA', color: '#AAAAAA'});
+          }
+          else{
+            data_s2[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+          cell.parents('table#table_s2').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+        }
+
+        function ManualCounter_a(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if(data_a[r][c] == 1){
+            data_a[r][c] = 2;
             cell.css({background: '#FF0000', color: '#FF0000'});
           }
-          else if(data[r][c] == 2){
-            data[r][c] = 3;
+          else if(data_a[r][c] == 2){
+            data_a[r][c] = 3;
             cell.css({background: '#0000FF', color: '#0000FF'});
           }
-          else if(data[r][c] == 3){
-            data[r][c] = 4;
+          else if(data_a[r][c] == 3){
+            data_a[r][c] = 4;
             cell.css({background: '#d303fc', color: '#d303fc'});
           }
-          else if(data[r][c] == 4){
-            data[r][c] = 1;
+          else if(data_a[r][c] == 4){
+            data_a[r][c] = 1;
             cell.css({background: '#00FF00', color: '#00FF00'});
           }
 
-          lastClicked(cell);
-          countAll();
+          cell.parents('table#table_a').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+          countAll_a();
+        }
+        function ManualCounter_b(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if(data_b[r][c] == 1){
+            data_b[r][c] = 2;
+            cell.css({background: '#FF0000', color: '#FF0000'});
+          }
+          else if(data_b[r][c] == 2){
+            data_b[r][c] = 3;
+            cell.css({background: '#0000FF', color: '#0000FF'});
+          }
+          else if(data_b[r][c] == 3){
+            data_b[r][c] = 4;
+            cell.css({background: '#d303fc', color: '#d303fc'});
+          }
+          else if(data_b[r][c] == 4){
+            data_b[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+
+          cell.parents('table#table_b').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+          countAll_b();
+        }
+        function ManualCounter_c(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if(data_c[r][c] == 1){
+            data_c[r][c] = 2;
+            cell.css({background: '#FF0000', color: '#FF0000'});
+          }
+          else if(data_c[r][c] == 2){
+            data_c[r][c] = 3;
+            cell.css({background: '#0000FF', color: '#0000FF'});
+          }
+          else if(data_c[r][c] == 3){
+            data_c[r][c] = 4;
+            cell.css({background: '#d303fc', color: '#d303fc'});
+          }
+          else if(data_c[r][c] == 4){
+            data_c[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+
+          cell.parents('table#table_c').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+          countAll_c();
+        }
+        function ManualCounter_s1(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if(data_s1[r][c] == 1){
+            data_s1[r][c] = 2;
+            cell.css({background: '#FF0000', color: '#FF0000'});
+          }
+          else if(data_s1[r][c] == 2){
+            data_s1[r][c] = 3;
+            cell.css({background: '#0000FF', color: '#0000FF'});
+          }
+          else if(data_s1[r][c] == 3){
+            data_s1[r][c] = 4;
+            cell.css({background: '#d303fc', color: '#d303fc'});
+          }
+          else if(data_s1[r][c] == 4){
+            data_s1[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+
+          cell.parents('table#table_s1').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+          countAll_s1();
+        }
+        function ManualCounter_s2(){
+          var cell = $(this);
+          var r = cell.attr('data-row') - 1;
+          var c = cell.attr('data-column') - 1;
+
+          if(data_s2[r][c] == 1){
+            data_s2[r][c] = 2;
+            cell.css({background: '#FF0000', color: '#FF0000'});
+          }
+          else if(data_s2[r][c] == 2){
+            data_s2[r][c] = 3;
+            cell.css({background: '#0000FF', color: '#0000FF'});
+          }
+          else if(data_s2[r][c] == 3){
+            data_s2[r][c] = 4;
+            cell.css({background: '#d303fc', color: '#d303fc'});
+          }
+          else if(data_s2[r][c] == 4){
+            data_s2[r][c] = 1;
+            cell.css({background: '#00FF00', color: '#00FF00'});
+          }
+
+          cell.parents('table#table_s2').find('td').removeClass('lastClicked');
+          cell.addClass('lastClicked');
+          countAll_s2();
         }
 
-        function countAll(){
+        function countAll_a(){
           let total_pria = 0, total_wanita=0; total_volunteer=0;
-          for(let c=0; c < data.length;c++){
-             for(var d=0;d <= data[0].length; d++){
-               if(data[c][d] == 2){
+          for(let c=0; c < data_a.length;c++){
+             for(var d=0;d <= data_a[0].length; d++){
+               if(data_a[c][d] == 2){
                  total_wanita++;
                }
-               else if(data[c][d] == 3){
+               else if(data_a[c][d] == 3){
                  total_pria++;
                }
-               else if(data[c][d] == 4){
+               else if(data_a[c][d] == 4){
                  total_volunteer++;
                }
              }
           }
-          $('#total_pria').html(total_pria);
-          $('#total_wanita').html(total_wanita);
-          $('#total_volunteer').html(total_volunteer);
+          $('#total_pria_a').html(total_pria);
+          $('#total_wanita_a').html(total_wanita);
+          $('#total_volunteer_a').html(total_volunteer);
         }
-
-        function lastClicked(cell){
-          cell.parents('table.excel_table').find('td').removeClass('lastClicked');
-          cell.addClass('lastClicked');
+        function countAll_b(){
+          let total_pria_b = 0, total_wanita_b=0; total_volunteer_b=0;
+          for(let c=0; c < data_b.length;c++){
+             for(var d=0;d <= data_b[0].length; d++){
+               if(data_b[c][d] == 2){
+                 total_wanita_b++;
+               }
+               else if(data_b[c][d] == 3){
+                 total_pria_b++;
+               }
+               else if(data_b[c][d] == 4){
+                 total_volunteer_b++;
+               }
+             }
+          }
+          $('#total_pria_b').html(total_pria_b);
+          $('#total_wanita_b').html(total_wanita_b);
+          $('#total_volunteer_b').html(total_volunteer_b);
+        }
+        function countAll_c(){
+          let total_pria_c = 0, total_wanita_c=0; total_volunteer_c=0;
+          for(let c=0; c < data_c.length;c++){
+             for(var d=0;d <= data_c[0].length; d++){
+               if(data_c[c][d] == 2){
+                 total_wanita_c++;
+               }
+               else if(data_c[c][d] == 3){
+                 total_pria_c++;
+               }
+               else if(data_c[c][d] == 4){
+                 total_volunteer_c++;
+               }
+             }
+          }
+          $('#total_pria_c').html(total_pria_c);
+          $('#total_wanita_c').html(total_wanita_c);
+          $('#total_volunteer_c').html(total_volunteer_c);
+        }
+        function countAll_s1(){
+          let total_pria_s1 = 0, total_wanita_s1=0; total_volunteer_s1=0;
+          for(let c=0; c < data_s1.length;c++){
+             for(var d=0;d <= data_s1[0].length; d++){
+               if(data_s1[c][d] == 2){
+                 total_wanita_s1++;
+               }
+               else if(data_s1[c][d] == 3){
+                 total_pria_s1++;
+               }
+               else if(data_s1[c][d] == 4){
+                 total_volunteer_s1++;
+               }
+             }
+          }
+          $('#total_pria_s1').html(total_pria_s1);
+          $('#total_wanita_s1').html(total_wanita_s1);
+          $('#total_volunteer_s1').html(total_volunteer_s1);
+        }
+        function countAll_s2(){
+          let total_pria_s2 = 0, total_wanita_s2=0; total_volunteer_s2=0;
+          for(let c=0; c < data_s2.length;c++){
+             for(var d=0;d <= data_s2[0].length; d++){
+               if(data_s2[c][d] == 2){
+                 total_wanita_s2++;
+               }
+               else if(data_s2[c][d] == 3){
+                 total_pria_s2++;
+               }
+               else if(data_s2[c][d] == 4){
+                 total_volunteer_s2++;
+               }
+             }
+          }
+          $('#total_pria_s2').html(total_pria_s2);
+          $('#total_wanita_s2').html(total_wanita_s2);
+          $('#total_volunteer_s2').html(total_volunteer_s2);
         }
 
 
     });
   </script>
+
 </html>
